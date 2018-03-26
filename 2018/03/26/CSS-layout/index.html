@@ -16,8 +16,7 @@
 <meta property="og:description" content="CSS中元素布局笔记文档流 定义：将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流 占用文档流：我们将网页比作一张二维平面，那么挂载在该平面的网页对象就称为占用了文档流。网页中大部分对象默认是占用文档流。 不占文档流：不挂在文档流这个平面上的对象，则称为不占用文档流。主要方式有： 设置float 设置position为fixed 设置position为absolute 父">
 <meta property="og:image" content="http://ncuwen.github.io/blog/2018/03/26/resource/article3/3.png">
 <meta property="og:image" content="http://ncuwen.github.io/blog/2018/03/26/resource/article3/2.png">
-<meta property="og:image" content="http://ncuwen.github.io/blog/2018/03/26/resource/article3/1.png">
-<meta property="og:updated_time" content="2018-03-26T13:17:25.069Z">
+<meta property="og:updated_time" content="2018-03-26T13:21:54.128Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS layout">
 <meta name="twitter:description" content="CSS中元素布局笔记文档流 定义：将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流 占用文档流：我们将网页比作一张二维平面，那么挂载在该平面的网页对象就称为占用了文档流。网页中大部分对象默认是占用文档流。 不占文档流：不挂在文档流这个平面上的对象，则称为不占用文档流。主要方式有： 设置float 设置position为fixed 设置position为absolute 父">
@@ -59,7 +58,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ncuwen.github.io/blog"></form>
@@ -120,60 +119,42 @@
 </ul>
 <hr>
 <h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul>
-<li><strong>定义</strong>：CSS中元素可以使用top,bottom,left,right来设置元素的定位。position的值不一样，这些属性所参考的位置不一样。</li>
-<li><strong>static</strong>：HTML元素的默认值，即没有定位，元素出现在正常的流中。使用该定位方式（静态方式）的元素不会受到 top, bottom, left, right影响。</li>
-<li><strong>fixed</strong>：元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动。<ul>
-<li>Fixed定位使元素的位置与文档流无关，因此不占据空间。（脱离文档流）</li>
-<li>Fixed定位的元素和其他元素重叠。（和其他元素不在同一平面）</li>
-</ul>
+<li><p><strong>定义</strong>：CSS中元素可以使用top,bottom,left,right来设置元素的定位。position的值不一样，这些属性所参考的位置不一样。</p>
 </li>
-<li><strong>relative</strong>：相对定位元素的定位是相对其正常位置。<ul>
-<li>相对定位的元素可以和其他元素重合，但它仍然处于文档流这一平面中，所以该元素仍然占文档流空间。</li>
-<li>与相对定位的元素重合的其他元素，毋庸置疑，也占文档流。</li>
-<li>相对定位元素经常被用来作为绝对定位元素的容器块。</li>
-</ul>
+<li><p><strong>static</strong>：HTML元素的默认值，即没有定位，元素出现在正常的流中。使用该定位方式（静态方式）的元素不会受到 top, bottom, left, right影响。</p>
 </li>
-<li><p><strong>absolute</strong>：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- **总结**：</span><br><span class="line">  - static元素不会受到left，top,right,bottom等属性影响，但可以通过box-model的属性来改变它们的位置。eg：</span><br><span class="line"></span><br><span class="line">  ```html</span><br><span class="line">  &lt;span style=&quot;position:static;left:100px;&quot;&gt;static定位&lt;/span&gt;</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  &lt;span style=&quot;position:static;margin-left:100px;&quot;&gt;static定位&lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="../resource/article3/1.png" alt=""></p>
+<li><p><strong>fixed</strong>：元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动。</p>
 <ul>
-<li>fixed定位与absolute定位的联系与区别<ul>
-<li>fixed定位是相对于浏览器窗口固定，而absolute是相对于文档（最近的父类元素，即使没有父类元素，也是相对于html标签）固定</li>
-<li>都脱离了文档流,都不占文档流的空间</li>
-</ul>
+<li><p>Fixed定位使元素的位置与文档流无关，因此不占据空间。（脱离文档流）</p>
+</li>
+<li><p>Fixed定位的元素和其他元素重叠。（和其他元素不在同一平面）</p>
 </li>
 </ul>
 </li>
-</ul>
-<hr>
-<h2 id="浮动-Float"><a href="#浮动-Float" class="headerlink" title="浮动 Float"></a>浮动 Float</h2><ul>
-<li><strong>定义</strong>：CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。</li>
-<li><strong>方式</strong>：元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。</li>
-<li><strong>特点</strong>：<ul>
-<li>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。</li>
-<li>浮动元素之后的元素将围绕它。</li>
-<li>浮动元素之前的元素将不会受到影响。</li>
-<li>如果图像是右浮动，后面的对象流将环绕在它左边。</li>
-</ul>
+<li><p><strong>relative</strong>：相对定位元素的定位是相对其正常位置。</p>
+<ul>
+<li><p>相对定位的元素可以和其他元素重合，但它仍然处于文档流这一平面中，所以该元素仍然占文档流空间。</p>
 </li>
-<li><strong>彼此相邻的浮动元素</strong>：几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻</li>
-<li><strong>清除浮动</strong>： 使用 clear<ul>
-<li>素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。</li>
-<li>clear 属性指定元素两侧不能出现浮动元素。</li>
-</ul>
+<li><p>与相对定位的元素重合的其他元素，毋庸置疑，也占文档流。</p>
+</li>
+<li><p>相对定位元素经常被用来作为绝对定位元素的容器块。</p>
 </li>
 </ul>
-<hr>
-<h2 id="脱离文档流的方式总结"><a href="#脱离文档流的方式总结" class="headerlink" title="脱离文档流的方式总结"></a>脱离文档流的方式总结</h2><ul>
-<li>position：absolute；</li>
-<li>position：fixed；</li>
-<li>float：left/right；</li>
-<li>父元素脱离文档流，则子元素也会脱离。</li>
+</li>
+<li><p><strong>absolute</strong>：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于\&lt;html></p>
+</li>
+<li><p><strong>总结</strong>：</p>
+<ul>
+<li>static元素不会受到left，top,right,bottom等属性影响，但可以通过box-model的属性来改变它们的位置。eg：</li>
 </ul>
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"position:static;left:100px;"</span>&gt;</span>static定位<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"position:static;margin-left:100px;"</span>&gt;</span>static定位<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">  ![](../resource/article3/1.png)</span><br><span class="line">  - fixed定位与absolute定位的联系与区别</span><br><span class="line">   - fixed定位是相对于浏览器窗口固定，而absolute是相对于文档（最近的父类元素，即使没有父类元素，也是相对于html标签）固定</span><br><span class="line">   - 都脱离了文档流,都不占文档流的空间</span><br><span class="line">----</span><br><span class="line">## 浮动 Float</span><br><span class="line">- **定义**：CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。</span><br><span class="line">- **方式**：元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。</span><br><span class="line">- **特点**：</span><br><span class="line"> - 一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。</span><br><span class="line"> - 浮动元素之后的元素将围绕它。</span><br><span class="line"> - 浮动元素之前的元素将不会受到影响。</span><br><span class="line"> - 如果图像是右浮动，后面的对象流将环绕在它左边。</span><br><span class="line">- **彼此相邻的浮动元素**：几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻</span><br><span class="line">- **清除浮动**： 使用 clear</span><br><span class="line"> - 素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。</span><br><span class="line"> - clear 属性指定元素两侧不能出现浮动元素。</span><br><span class="line">----</span><br><span class="line">## 脱离文档流的方式总结</span><br><span class="line">- position：absolute；</span><br><span class="line">- position：fixed；</span><br><span class="line">- float：left/right；</span><br><span class="line">- 父元素脱离文档流，则子元素也会脱离。</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cjf89c2gu0000xkw5aegu9be2" class="article-share-link">Share</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cjf89hrdg0000c8w5pms2pghy" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/note/">note</a></li></ul>
@@ -186,7 +167,7 @@
   
   
     <a href="/blog/2018/03/24/WebResourcePath/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">Web资源路径详解</div>
     </a>
   
@@ -201,7 +182,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/note/">note</a></li></ul>
     </div>
@@ -230,7 +211,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -240,7 +221,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
