@@ -5,14 +5,23 @@
   
 
   
-  <title>NcuWen</title>
+  <title>Bezier曲线绘制算法与字母参数 | NcuWen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="NcuWen">
-<meta property="og:url" content="http://ncuwen.github.io/blog/index.html">
+  <meta name="description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+<meta name="keywords" content="computer graphics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bezier曲线绘制算法与字母参数">
+<meta property="og:url" content="http://ncuwen.github.io/blog/2018/04/28/Alphabet/index.html">
 <meta property="og:site_name" content="NcuWen">
+<meta property="og:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+<meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/T.png">
+<meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/F.png">
+<meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/5.png">
+<meta property="og:updated_time" content="2018-04-28T14:06:55.929Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NcuWen">
+<meta name="twitter:title" content="Bezier曲线绘制算法与字母参数">
+<meta name="twitter:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+<meta name="twitter:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/T.png">
   
     <link rel="alternate" href="/blog/atom.xml" title="NcuWen" type="application/atom+xml">
   
@@ -59,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Alphabet" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Alphabet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2018/04/28/Alphabet/" class="article-date">
   <time datetime="2018-04-28T13:54:18.539Z" itemprop="datePublished">2018-04-28</time>
@@ -78,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/04/28/Alphabet/">Bezier曲线绘制算法与字母参数</a>
+    <h1 class="article-title" itemprop="name">
+      Bezier曲线绘制算法与字母参数
     </h1>
   
 
@@ -115,281 +122,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-CSS-layout" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2018/03/26/CSS-layout/" class="article-date">
-  <time datetime="2018-03-26T13:13:49.559Z" itemprop="datePublished">2018-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/03/26/CSS-layout/">CSS layout</a>
-    </h1>
+    <a href="/blog/2018/03/26/CSS-layout/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title">CSS layout</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h2><ul>
-<li><strong>定义</strong>：将窗体自上而下分成一行行, 并在每行中按从左至右的顺序排放元素,即为文档流</li>
-<li><strong>占用文档流</strong>：我们将网页比作一张二维平面，那么挂载在该平面的网页对象就称为占用了文档流。网页中大部分对象默认是占用文档流。</li>
-<li><strong>不占文档流</strong>：不挂在文档流这个平面上的对象，则称为不占用文档流。主要方式有：<ul>
-<li>设置float</li>
-<li>设置position为fixed</li>
-<li>设置position为absolute</li>
-<li>父类元素与子类元素的关系</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="内联元素和块元素"><a href="#内联元素和块元素" class="headerlink" title="内联元素和块元素"></a>内联元素和块元素</h2><ul>
-<li><strong>区分</strong>：所占宽度是否是占用了全部宽度</li>
-<li><p><strong>块元素</strong>：占用了全部宽度，在前后都是换行符。eg：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>内联元素</strong>：只需要必要的宽度，不强制换行。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span> 、<span class="tag">&lt;<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>改变元素的显示方式</strong>：<strong> <em>display</em> </strong></p>
-<ul>
-<li>将内联元素改为块元素：display:block;<br><img src="../resource/article3/3.png" alt=""></li>
-<li>将块元素改为内联元素：display:inline;<br><img src="../resource/article3/2.png" alt=""></li>
-</ul>
-</li>
-<li>【注】：一个内联元素设置为display:block是不允许有它内部的嵌套块元素。</li>
-</ul>
-<hr>
-<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul>
-<li><p><strong>定义</strong>：CSS中元素可以使用top,bottom,left,right来设置元素的定位。position的值不一样，这些属性所参考的位置不一样。</p>
-</li>
-<li><p><strong>static</strong>：HTML元素的默认值，即没有定位，元素出现在正常的流中。使用该定位方式（静态方式）的元素不会受到 top, bottom, left, right影响。</p>
-</li>
-<li><p><strong>fixed</strong>：元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动。</p>
-<ul>
-<li><p>Fixed定位使元素的位置与文档流无关，因此不占据空间。（脱离文档流）</p>
-</li>
-<li><p>Fixed定位的元素和其他元素重叠。（和其他元素不在同一平面）</p>
-</li>
-</ul>
-</li>
-<li><p><strong>relative</strong>：相对定位元素的定位是相对其正常位置。</p>
-<ul>
-<li><p>相对定位的元素可以和其他元素重合，但它仍然处于文档流这一平面中，所以该元素仍然占文档流空间。</p>
-</li>
-<li><p>与相对定位的元素重合的其他元素，毋庸置疑，也占文档流。</p>
-</li>
-<li><p>相对定位元素经常被用来作为绝对定位元素的容器块。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>absolute</strong>：绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于\&lt;html></p>
-</li>
-<li><p><strong>总结</strong>：</p>
-<ul>
-<li>static元素不会受到left，top,right,bottom等属性影响，但可以通过box-model的属性来改变它们的位置。eg：</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"position:static;left:100px;"</span>&gt;</span>static定位<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"position:static;margin-left:100px;"</span>&gt;</span>static定位<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="../resource/article3/1.png" alt=""></p>
-<ul>
-<li>fixed定位与absolute定位的联系与区别<ul>
-<li>fixed定位是相对于浏览器窗口固定，而absolute是相对于文档（最近的父类元素，即使没有父类元素，也是相对于html标签）固定</li>
-<li>都脱离了文档流,都不占文档流的空间</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="浮动-Float"><a href="#浮动-Float" class="headerlink" title="浮动 Float"></a>浮动 Float</h2><ul>
-<li><strong>定义</strong>：CSS 的 Float（浮动），会使元素向左或向右移动，其周围的元素也会重新排列。</li>
-<li><strong>方式</strong>：元素的水平方向浮动，意味着元素只能左右移动而不能上下移动。</li>
-<li><strong>特点</strong>：<ul>
-<li>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。</li>
-<li>浮动元素之后的元素将围绕它。</li>
-<li>浮动元素之前的元素将不会受到影响。</li>
-<li>如果图像是右浮动，后面的对象流将环绕在它左边。</li>
-</ul>
-</li>
-<li><strong>彼此相邻的浮动元素</strong>：几个浮动的元素放到一起，如果有空间的话，它们将彼此相邻</li>
-<li><strong>清除浮动</strong>： 使用 clear<ul>
-<li>素浮动之后，周围的元素会重新排列，为了避免这种情况，使用 clear 属性。</li>
-<li>clear 属性指定元素两侧不能出现浮动元素。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="脱离文档流的方式总结"><a href="#脱离文档流的方式总结" class="headerlink" title="脱离文档流的方式总结"></a>脱离文档流的方式总结</h2><ul>
-<li>position：absolute；</li>
-<li>position：fixed；</li>
-<li>float：left/right；</li>
-<li>父元素脱离文档流，则子元素也会脱离。</li>
-</ul>
-<p><code>`</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cjgjgo37b000078w5o7ir5l4g" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/note/">note</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-WebResourcePath" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2018/03/24/WebResourcePath/" class="article-date">
-  <time datetime="2018-03-24T02:11:49.178Z" itemprop="datePublished">2018-03-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/note/">note</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/03/24/WebResourcePath/">Web资源路径详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="HTML路径："><a href="#HTML路径：" class="headerlink" title="HTML路径："></a>HTML路径：</h2><p>在html中，想要引用一个文件，需要使用正确的文件路径。顾名思义，就是该文件所在的位置。通过正确的路径，我们可以获得该文件，使用了错误的文件路径，就会导致引用失效(无法浏览链接文件，或无法显示插入的图片等)。注：这里说的文件，包括图像文件，影视文件，文本文件等。</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
-<li><strong>Relative Path</strong>（相对路径）：<em>同一个目录的文件引用</em></li>
-<li><strong>Absolute Path</strong>（绝对路径）：<em>带域名的文件的完整路径</em></li>
-</ul>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><h5 id="相对路径"><a href="#相对路径" class="headerlink" title="相对路径"></a>相对路径</h5><ul>
-<li><strong>源文件和引用文件在同一个目录里————直接写引用文件名即可</strong> </li>
-</ul>
-<p>Web是基于网络的服务，讨论相对路径的时候应该放在网络上（即服务器）讨论，但在本文中，为了说明问题，以本地电脑上的路径进行举例。事实上，在本地上编写Web程序时，在讨论相对路径时，完全可以以本地文件夹做参考，只需在将本地文件夹上传服务器时，不改变文件夹相对位置时即可。</p>
-<p>eg：</p>
-<p><img src="resource/article2/imgs/relative_same_folder.png" alt="relative_same_folde"></p>
-<p>要在index.html中引用quote.html，则路径为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"quote.html"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>表示上级目录————../表示源文件所在目录的上一级目录</strong></li>
-</ul>
-<p>eg:</p>
-<p><img src="../resource/article2/imgs/relative_pre_folder.png" alt="relative_pre_floder"></p>
-<p>要在quote.html中引用index.html，则路径为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"../index.html"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>表示源文件所在目录的上上级目录，则用../../，以此类推。</p>
-<ul>
-<li><strong>表示下级目录————直接写下级目录文件的路径</strong></li>
-</ul>
-<p>eg：</p>
-<p><img src="../resource/article2/imgs/relative_pre_folder.png" alt="relative_pre_floder"></p>
-<p>要在index.html中引用quote.html，则路径为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"resource/html"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--或者--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/resource/html"</span>&gt;</span>click<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h5 id="绝对路径"><a href="#绝对路径" class="headerlink" title="绝对路径"></a>绝对路径</h5><p><strong>【注】：</strong>这里所说的绝对路径，并非是以电脑本地为根目录的绝对路径。而是虚拟主机提供的目录。</p>
-<p>假设你注册了域名www ncuwen.cn(此为博主域名，有兴趣欢迎<a href="http://www.ncuwen.cn" target="_blank" rel="noopener">访问</a>），并申请了<a href="https://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA" target="_blank" rel="noopener">虚拟主机</a>，你的虚拟主机提供商会给你一个目录，比如www，这个www目录就是你网站的根目录。</p>
-<p>如果你在www目录下放了一张图片，名称为：img.jpg，则访问该图片的路径为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://img.jpg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>若在www目录下存在一个文件夹，比如imgs目录，img.jpg在imgs下，则访问该图片的路径为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://imgs/img.jpg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>eg：一个从网络上使用资源的实例：</strong></p>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1521545395983&amp;di=dd9f717490e3e70f449bf2488e5bef8b&amp;imgtype=0&amp;src=http%3A%2F%2Fi2.hdslb.com%2Fbfs%2Farchive%2F9d5abb6cff1c0b9fd313976c8f3efddf4f150d51.jpg" alt=""></p>
-<p><strong>【温馨提示】</strong>：在使用网络资源时，一定要找到资源的源地址，若为图片，则路径的最后一定是该图片资源。获取该图片的路径方法时：右键点击该图片，选择复制图片地址。</p>
-<hr>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/24/WebResourcePath/" data-id="cjgjgo386000478w5ujcb9mhr" class="article-share-link">Compartir</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/path-Relative-Path-Absolute-Path/">path , Relative Path ,Absolute Path</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Perface" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2018/03/23/Perface/" class="article-date">
-  <time datetime="2018-03-23T15:11:28.836Z" itemprop="datePublished">2018-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/03/23/Perface/">Perface</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my blog! This is the first post I uploaded through GitHub . And you can also visit <a href="http://www.ncuwen.cn" target="_blank" rel="noopener">my other private web site</a> .In this blog, I will use <strong>English</strong> and <strong>Mandarin</strong>. If you find any problems in the process of browsing，You can contact me through the following contact：</p>
-<ul>
-<li><strong>QQ</strong>：869384514</li>
-<li><strong>Github</strong>: ncuwen.github.io</li>
-<li><strong>Email</strong>：<a href="mailto:869384514@qq.com" target="_blank" rel="noopener">869384514@qq.com</a></li>
-</ul>
-<h2 id="Some-recommendations"><a href="#Some-recommendations" class="headerlink" title="Some recommendations"></a>Some recommendations</h2><h3 id="An-article"><a href="#An-article" class="headerlink" title="An article"></a>An article</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">《诫子书》——诸葛亮</span><br></pre></td></tr></table></figure>
-<p>Link: <a href="http://hanyu.baidu.com/shici/detail?pid=ce7bcf07f57411e58fb0c8e0eb15ce01&amp;from=kg0" target="_blank" rel="noopener">click here</a></p>
-<h3 id="A-novel"><a href="#A-novel" class="headerlink" title="A novel"></a>A novel</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">《多情剑客无情剑》——古龙</span><br><span class="line">又名：小李飞刀</span><br></pre></td></tr></table></figure>
-<p>Link: <a href="http://www.my285.com/wuxia/gulong/dqjkwqj/index.htm" target="_blank" rel="noopener">Reading</a>   <a href="https://pan.baidu.com/s/1kQzpq2GuzuLDKq1urvFZbA" target="_blank" rel="noopener">download</a></p>
-<p>More: <a href="https://pan.baidu.com/s/10BzszZUSo9TXaYIburjo8w" target="_blank" rel="noopener">Download the complete works of Cologne’s Novels</a> PassWord : v0q4</p>
-<h3 id="Friendship-link"><a href="#Friendship-link" class="headerlink" title="Friendship link"></a>Friendship link</h3><ul>
-<li>@ <strong>Mango</strong>    <a href="http://www.eastsea.ac.cn" target="_blank" rel="noopener">http://www.eastsea.ac.cn</a> </li>
-<li>@ <strong>Lemon’s Dong</strong>        <a href="http://www.jianyuyu.cn" target="_blank" rel="noopener">http://www.jianyuyu.cn</a> </li>
-<li>@ <strong>NcuWen</strong>  <a href="http://www.ncuwen.cn" target="_blank" rel="noopener">http://www.ncuwen.cn</a>   <a href="http://ncuwen.github.io">http://ncuwen.github.io</a></li>
-<li>@ <strong>ConyL</strong> <a href="http://conyl.github.io" target="_blank" rel="noopener">http://conyl.github.io</a></li>
-<li>@ <strong>Ditto</strong> <a href="http://dittoyn.github.io" target="_blank" rel="noopener">http://dittoyn.github.io</a></li>
-</ul>
-<h3 id="Distance"><a href="#Distance" class="headerlink" title="Distance"></a>Distance</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">生活不止眼前的苟且，还有诗和远方。</span><br></pre></td></tr></table></figure>
-<p>Life is more than the trivials，it still deserves your poem and dream.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/23/Perface/" data-id="cjgjgo37q000178w5oo7ggcfw" class="article-share-link">Compartir</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
