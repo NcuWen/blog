@@ -7,20 +7,20 @@
   
   <title>Bezier曲线绘制算法与字母参数 | NcuWen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+  <meta name="description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的循环实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
 <meta name="keywords" content="computer graphics">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bezier曲线绘制算法与字母参数">
 <meta property="og:url" content="http://ncuwen.github.io/blog/2018/04/28/Alphabet/index.html">
 <meta property="og:site_name" content="NcuWen">
-<meta property="og:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+<meta property="og:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的循环实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
 <meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/T.png">
 <meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/F.png">
 <meta property="og:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/5.png">
-<meta property="og:updated_time" content="2018-04-28T14:06:55.929Z">
+<meta property="og:updated_time" content="2018-05-15T07:03:39.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bezier曲线绘制算法与字母参数">
-<meta name="twitter:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的递归实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
+<meta name="twitter:description" content="绘制算法1234567891011121314151617181920212223242526272829303132//3次Bezier曲线的循环实现算法double coor[8];int main() &amp;#123;	HDC hdc = GetHdc();	for (int i = 0; i &amp;lt; N; i++) &amp;#123;		for (int j = 0; j &amp;lt; 8; j++)">
 <meta name="twitter:image" content="http://ncuwen.github.io/blog/2018/04/28/resource/article4/T.png">
   
     <link rel="alternate" href="/blog/atom.xml" title="NcuWen" type="application/atom+xml">
@@ -57,9 +57,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ncuwen.github.io/blog"></form>
@@ -94,7 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="绘制算法"><a href="#绘制算法" class="headerlink" title="绘制算法"></a>绘制算法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3次Bezier曲线的递归实现算法</span></span><br><span class="line"><span class="keyword">double</span> coor[<span class="number">8</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	HDC hdc = GetHdc();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">			coor[j] = coordinate[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">		<span class="keyword">while</span> (t &lt;= <span class="number">1.0</span>) &#123;</span><br><span class="line">			getInterPoint(<span class="number">4</span>, t);</span><br><span class="line">			t = t + <span class="number">0.0001</span>;</span><br><span class="line">			SetPixel(hdc, ((coor[<span class="number">0</span>]+<span class="number">0.6</span>)/<span class="number">5</span>+<span class="number">200</span>), <span class="number">200</span>-coor[<span class="number">1</span>]/<span class="number">5</span>, RGB(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"PAUSE"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInterPoint</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">double</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">double</span> x1 = coor[i*<span class="number">2</span> + <span class="number">0</span>];</span><br><span class="line">			<span class="keyword">double</span> y1 = coor[i*<span class="number">2</span> + <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">double</span> x2 = coor[i*<span class="number">2</span> + <span class="number">2</span>];</span><br><span class="line">			<span class="keyword">double</span> y2 = coor[i*<span class="number">2</span> + <span class="number">3</span>];</span><br><span class="line">			coor[i*<span class="number">2</span>] = x1 + (x2 - x1)*t;</span><br><span class="line">			coor[i*<span class="number">2</span> + <span class="number">1</span>] = y1 + (y2 - y1)*t;</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">		getInterPoint(n, t);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="绘制算法"><a href="#绘制算法" class="headerlink" title="绘制算法"></a>绘制算法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3次Bezier曲线的循环实现算法</span></span><br><span class="line"><span class="keyword">double</span> coor[<span class="number">8</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	HDC hdc = GetHdc();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">			coor[j] = coordinate[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">double</span> t = <span class="number">0.0</span>;</span><br><span class="line">		<span class="keyword">while</span> (t &lt;= <span class="number">1.0</span>) &#123;</span><br><span class="line">			getInterPoint(<span class="number">4</span>, t);</span><br><span class="line">			t = t + <span class="number">0.0001</span>;</span><br><span class="line">			SetPixel(hdc, ((coor[<span class="number">0</span>]+<span class="number">0.6</span>)/<span class="number">5</span>+<span class="number">200</span>), <span class="number">200</span>-coor[<span class="number">1</span>]/<span class="number">5</span>, RGB(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"PAUSE"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getInterPoint</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">double</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">double</span> x1 = coor[i*<span class="number">2</span> + <span class="number">0</span>];</span><br><span class="line">			<span class="keyword">double</span> y1 = coor[i*<span class="number">2</span> + <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">double</span> x2 = coor[i*<span class="number">2</span> + <span class="number">2</span>];</span><br><span class="line">			<span class="keyword">double</span> y2 = coor[i*<span class="number">2</span> + <span class="number">3</span>];</span><br><span class="line">			coor[i*<span class="number">2</span>] = x1 + (x2 - x1)*t;</span><br><span class="line">			coor[i*<span class="number">2</span> + <span class="number">1</span>] = y1 + (y2 - y1)*t;</span><br><span class="line">		&#125;</span><br><span class="line">		n--;</span><br><span class="line">		getInterPoint(n, t);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><ul>
 <li>字母T</li>
 </ul>
@@ -114,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cjgjgo386000378w57jy9ssug" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cjh7c215m0000h8jehk0nzf6n" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/computer-graphics/">computer graphics</a></li></ul>
@@ -127,7 +127,7 @@
   
   
     <a href="/blog/2018/03/26/CSS-layout/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Viejo</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">CSS layout</div>
     </a>
   
@@ -142,7 +142,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Kategorien</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/graphics/">graphics</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/note/">note</a></li></ul>
     </div>
@@ -162,7 +162,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/blog/tags/computer-graphics/" style="font-size: 10px;">computer graphics</a> <a href="/blog/tags/note/" style="font-size: 10px;">note</a> <a href="/blog/tags/path-Relative-Path-Absolute-Path/" style="font-size: 10px;">path , Relative Path ,Absolute Path</a>
     </div>
@@ -171,7 +171,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -181,7 +181,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -214,7 +214,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 DingJiawen<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
