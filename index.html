@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ncuwen.github.io/blog"></form>
@@ -60,6 +60,138 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Spring basic annotation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2018/06/07/Spring basic annotation/" class="article-date">
+  <time datetime="2018-06-07T15:06:01.388Z" itemprop="datePublished">2018-06-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/JavaWeb/">JavaWeb</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2018/06/07/Spring basic annotation/">Spring基本注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring基本注解"><a href="#Spring基本注解" class="headerlink" title="Spring基本注解"></a>Spring基本注解</h1><blockquote>
+<p>Spring IoC 容器 ( ApplicationContext ) 负责创建Bean,并通过容器将功能类Bean 注入到需要的Bean中</p>
+</blockquote>
+<ul>
+<li><strong>Bean的创建和注入方式</strong><ul>
+<li>xml配置</li>
+<li>Java配置</li>
+<li>groovy配置 (注解配置)</li>
+</ul>
+</li>
+<li>配置元数据<ul>
+<li>xml配置,Java配置,注解配置</li>
+<li>描述数据的数据</li>
+<li>本身不具备任何可执行的能力,只能通过外界代码来对这些元数据进行解析后进行一些有意义的操作</li>
+<li>Spring 容器解析这些配置元数据进行 Bean 的初始化,配置和管理依赖</li>
+</ul>
+</li>
+</ul>
+<h4 id="1、依赖注入-dependency-injection-DI"><a href="#1、依赖注入-dependency-injection-DI" class="headerlink" title="1、依赖注入 (dependency injection-DI)"></a>1、依赖注入 (dependency injection-DI)</h4><blockquote>
+<p>容器负责创建对象和维护对象间的依赖关系,而不是通过对象本身负责自己的创建和解决自己的依赖</p>
+</blockquote>
+<ul>
+<li><p><strong>声明注解:</strong> 在类前面加上注解声明当前的类是Spring管理的一个Bean</p>
+<ul>
+<li><strong>@Component</strong> : 组件，没有明确的角色</li>
+<li><strong>@Service</strong>  : 在业务逻辑层(service)层使用</li>
+<li><strong>@Repository</strong>  :在数据访问层(dao层)使用</li>
+<li><strong>@Controller</strong>  :在展现层(MVC➡Spring MVC)使用</li>
+</ul>
+</li>
+<li><p><strong>注入注解:</strong>  注入Bean的注解,一般情况下通用</p>
+<ul>
+<li><strong>@Autowird:</strong>  Spring 提供的注解</li>
+<li><strong>@Inject:</strong> JSR-330 提供的注解</li>
+<li><strong>@Resource:</strong>  JSR-250 提供的注解</li>
+</ul>
+</li>
+<li><p><strong>使用流程</strong></p>
+<ul>
+<li><p>编写功能类的Bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="meta">@Service</span> <span class="comment">//1</span></span><br><span class="line">publice <span class="class"><span class="keyword">class</span> <span class="title">FunctionService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String word)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span>+word+<span class="string">" !"</span>;	</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * 代码解释 : </span></span><br><span class="line"><span class="comment"> * 1: 使用<span class="doctag">@Service</span>注解声明当前FunctionService类是Spring管理的一个Bean.使用  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Component</span>,<span class="doctag">@Service</span>,<span class="doctag">@Repository</span>和<span class="doctag">@Controller</span>是等效的,可根据需要选用.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用功能类的Bean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> org.springframe.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"><span class="meta">@Service</span> <span class="comment">//1</span></span><br><span class="line">publice <span class="class"><span class="keyword">class</span> <span class="title">UseFunctionService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span> <span class="comment">//2</span></span><br><span class="line">    FunctionService functionService;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">SayHello</span><span class="params">(String word)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> functionService.sayHello(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  代码解释 :</span></span><br><span class="line"><span class="comment"> *  1: 使用<span class="doctag">@Service</span> 注解声明当前UseFunctionService类是Spring管理的一个Bean.</span></span><br><span class="line"><span class="comment"> *  2: 使用<span class="doctag">@Autowired</span> 将 FunctionService 的实体 Bean 注入到 UseFunctionService 中,让</span></span><br><span class="line"><span class="comment"> *  UseFunctionService 具备 FunctionService 的功能,此处使用 JSR-330 的 <span class="doctag">@Inject</span> 注解或者 </span></span><br><span class="line"><span class="comment"> *  JSR-250的 <span class="doctag">@Resource</span> 注解是等效的.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="meta">@Configuration</span> <span class="comment">//1</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"com.ncuwen.study_spring4.studyInstance"</span>) <span class="comment">//2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstConfig</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  代码解释 :</span></span><br><span class="line"><span class="comment"> *  1: <span class="doctag">@Configuration</span> 注解声明当前FirstConfig类是一个配置类.</span></span><br><span class="line"><span class="comment"> *  2: 使用<span class="doctag">@ComponentScan</span> 自动扫描包名下所有使用<span class="doctag">@Service</span>,<span class="doctag">@Component</span>,<span class="doctag">@Reponsitory</span>和<span class="doctag">@Controller</span>的</span></span><br><span class="line"><span class="comment"> *  类, 并注册为Bean.</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext context = </span><br><span class="line">            <span class="keyword">new</span> AnnotationConfigApplicationContext(FirstConfig.class); <span class="comment">//1</span></span><br><span class="line">        UseFunctionService useFunctionService = </span><br><span class="line">            context.getBean(UseFunctionService.calss); <span class="comment">//2</span></span><br><span class="line">        System.out.println(useFunctionService.SayHello(<span class="string">"world"</span>));</span><br><span class="line">        context.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  代码解释 :</span></span><br><span class="line"><span class="comment"> *  1: 使用 AnnotationConfigApplicationContext 作为 Spring 容器,接受输入一个配置类作为参数;</span></span><br><span class="line"><span class="comment"> *  2: 使用声明配置的 UseFunctionService 的Bean</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-Java配置"><a href="#2-Java配置" class="headerlink" title="2.Java配置"></a>2.Java配置</h4><blockquote>
+<p>Java配置是Spring4.x 推荐的配置方式,可以完全替代 xml 配置</p>
+<p>Java配置是Spring Boot推荐的配置方式</p>
+</blockquote>
+<ul>
+<li><p>方式</p>
+<ul>
+<li>@Configuration : 声明当前类是一个配置类,相当于一个Spring的 xml 文件</li>
+<li>@Bean : 注解在方法上,声明当前方法的返回值为一个Bean</li>
+</ul>
+</li>
+<li><p>使用原则</p>
+<ul>
+<li><strong>全局配置使用*Java配置 : </strong>数据库相关配置 , MVC相关配置</li>
+<li><strong>业务Bean的配置使用注解配置 </strong></li>
+</ul>
+</li>
+<li><p>使用过程</p>
+<ul>
+<li>编写Bean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyConfig;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Function</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String word)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span>+word+<span class="string">" !"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1处没有用@Service 声明 Bean</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用功能类的Bean</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyConfig;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseFunction</span> </span>&#123;</span><br><span class="line">    <span class="comment">//2</span></span><br><span class="line">    Function function;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFunction</span><span class="params">(Function function)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.function = function;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">SayHello</span><span class="params">(String word)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> function.sayHello(word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1处没有用@Service 声明 Bean</span></span><br><span class="line"><span class="comment">//2处没有使用@Autowired注解注入Bean</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyConfig;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span> <span class="comment">//1</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span> <span class="comment">//2</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Function <span class="title">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Function();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UseFunction <span class="title">useFunction</span><span class="params">()</span></span>&#123;</span><br><span class="line">        UseFunction useFunction = <span class="keyword">new</span> UseFunction();</span><br><span class="line">        useFunction.setFunction(function());</span><br><span class="line">        <span class="keyword">return</span> useFunction;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*@Bean //3</span></span><br><span class="line"><span class="comment">    public UseFunction useFunction(Function function)&#123;</span></span><br><span class="line"><span class="comment">        UseFunction useFunction = new UseFunction();</span></span><br><span class="line"><span class="comment">        useFunction.setFunction(function);</span></span><br><span class="line"><span class="comment">        return useFunction;</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1 使用 @Configuration 注解表明当前类是一个配置类,这意味着这个类里可能有0个或者多个@Bean注解,此处</span></span><br><span class="line"><span class="comment">//没有使用包扫描,是因为所有Bean都在此类中定义了</span></span><br><span class="line"><span class="comment">//2使用 @Bean 注解声明当前方法 Function的返回值是一个Bean,Bean的名称是方法名</span></span><br><span class="line"><span class="comment">//3注入Function的Bean时候直接调用function()</span></span><br><span class="line"><span class="comment">//4另外一种注入方式</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.ncuwen.study_spring4.studyConfig.JavaConfig;</span><br><span class="line"><span class="keyword">import</span> com.ncuwen.study_spring4.studyConfig.UseFunction;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext context =</span><br><span class="line">                <span class="keyword">new</span> AnnotationConfigApplicationContext(FirstConfig.class);</span><br><span class="line"></span><br><span class="line">        AnnotationConfigApplicationContext context1 =</span><br><span class="line">                <span class="keyword">new</span> AnnotationConfigApplicationContext(JavaConfig.class);</span><br><span class="line">        UseFunction useFunction = context1.getBean(UseFunction.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(useFunction.SayHello(<span class="string">"java config"</span>));</span><br><span class="line">        context.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ncuwen.github.io/blog/2018/06/07/Spring basic annotation/" data-id="cji4ogqyz0008sgje55pcci4q" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Spring/">Spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Alphabet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -107,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cjh7c215m0000h8jehk0nzf6n" class="article-share-link">Teilen</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cji4ogqww0000sgjego0fvmrm" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/computer-graphics/">computer graphics</a></li></ul>
@@ -240,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cjh7c215t0001h8jeozeiyzfz" class="article-share-link">Teilen</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cji4ogqyc0005sgjed4e7m1kv" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/note/">note</a></li></ul>
@@ -321,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/24/WebResourcePath/" data-id="cjh7c21620005h8jeh4doz7fc" class="article-share-link">Teilen</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/24/WebResourcePath/" data-id="cji4ogqz00009sgje0eonqib1" class="article-share-link">Compartir</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/path-Relative-Path-Absolute-Path/">path , Relative Path ,Absolute Path</a></li></ul>
@@ -379,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/23/Perface/" data-id="cjh7c215z0004h8jevbv62o29" class="article-share-link">Teilen</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/23/Perface/" data-id="cji4ogqz4000csgje1fwvmwwb" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -397,9 +529,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
+    <h3 class="widget-title">Categorías</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/graphics/">graphics</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/note/">note</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaWeb/">JavaWeb</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/graphics/">graphics</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/note/">note</a></li></ul>
     </div>
   </div>
 
@@ -409,7 +541,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/computer-graphics/">computer graphics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/path-Relative-Path-Absolute-Path/">path , Relative Path ,Absolute Path</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/computer-graphics/">computer graphics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/note/">note</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/path-Relative-Path-Absolute-Path/">path , Relative Path ,Absolute Path</a></li></ul>
     </div>
   </div>
 
@@ -417,18 +549,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nube de Tags</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/computer-graphics/" style="font-size: 10px;">computer graphics</a> <a href="/blog/tags/note/" style="font-size: 10px;">note</a> <a href="/blog/tags/path-Relative-Path-Absolute-Path/" style="font-size: 10px;">path , Relative Path ,Absolute Path</a>
+      <a href="/blog/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/blog/tags/computer-graphics/" style="font-size: 10px;">computer graphics</a> <a href="/blog/tags/note/" style="font-size: 10px;">note</a> <a href="/blog/tags/path-Relative-Path-Absolute-Path/" style="font-size: 10px;">path , Relative Path ,Absolute Path</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -436,9 +568,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2018/06/07/Spring basic annotation/">Spring基本注解</a>
+          </li>
         
           <li>
             <a href="/blog/2018/04/28/Alphabet/">Bezier曲线绘制算法与字母参数</a>
@@ -469,7 +605,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 DingJiawen<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
