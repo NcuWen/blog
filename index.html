@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ncuwen.github.io/blog"></form>
@@ -74,16 +74,6 @@
   </div>
   <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2018/06/07/Spring basic annotation/">Spring基本注解</a>
-    </h1>
-  
-
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -177,11 +167,24 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ncuwen.study_spring4.studyInstance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.ncuwen.study_spring4.studyConfig.JavaConfig;</span><br><span class="line"><span class="keyword">import</span> com.ncuwen.study_spring4.studyConfig.UseFunction;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.AnnotationConfigApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext context =</span><br><span class="line">                <span class="keyword">new</span> AnnotationConfigApplicationContext(FirstConfig.class);</span><br><span class="line"></span><br><span class="line">        AnnotationConfigApplicationContext context1 =</span><br><span class="line">                <span class="keyword">new</span> AnnotationConfigApplicationContext(JavaConfig.class);</span><br><span class="line">        UseFunction useFunction = context1.getBean(UseFunction.class);</span><br><span class="line"></span><br><span class="line">        System.out.println(useFunction.SayHello(<span class="string">"java config"</span>));</span><br><span class="line">        context.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="3-AOP"><a href="#3-AOP" class="headerlink" title="3.AOP"></a>3.AOP</h4><blockquote>
+<p>AOP : 面向切面编程</p>
+<p>Spring支持 AspectJ的注解式切面编程</p>
+</blockquote>
+<ul>
+<li>使用方式<ul>
+<li>使用 @Aspect 声明是一个切面</li>
+<li>使用 @After ， @Before ， @Around ， 定义<strong>建言（advice）</strong>，可直接将拦截规则（切点）作为参数</li>
+<li>其中 @After ， @Before ， @Around 参数的拦截规则为切点（PointCut），为了使切点复用，可使用@PointCut专门定义拦截规则，然后在@After ， @Before  ，@Around的参数中调用</li>
+<li>其中符合条件的每一个被拦截处为连接点</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/06/07/Spring basic annotation/" data-id="cji4ogqyz0008sgje55pcci4q" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/06/07/Spring basic annotation/" data-id="cji5b26n20001f8jefbxfp4q6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Spring/">Spring</a></li></ul>
@@ -239,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cji4ogqww0000sgjego0fvmrm" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/04/28/Alphabet/" data-id="cji5b26ms0000f8je9xiit2w0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/computer-graphics/">computer graphics</a></li></ul>
@@ -372,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cji4ogqyc0005sgjed4e7m1kv" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/26/CSS-layout/" data-id="cji5b26na0005f8jea7tnyozy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/note/">note</a></li></ul>
@@ -453,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/24/WebResourcePath/" data-id="cji4ogqz00009sgje0eonqib1" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/24/WebResourcePath/" data-id="cji5b26nc0006f8jep30zppxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/path-Relative-Path-Absolute-Path/">path , Relative Path ,Absolute Path</a></li></ul>
@@ -511,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://ncuwen.github.io/blog/2018/03/23/Perface/" data-id="cji4ogqz4000csgje1fwvmwwb" class="article-share-link">Compartir</a>
+      <a data-url="http://ncuwen.github.io/blog/2018/03/23/Perface/" data-id="cji5b26n80004f8jevtixa9b3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -529,7 +532,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categorías</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/JavaWeb/">JavaWeb</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/graphics/">graphics</a></li><li class="category-list-item"><a class="category-list-link" href="/blog/categories/note/">note</a></li></ul>
     </div>
@@ -549,7 +552,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/blog/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/blog/tags/computer-graphics/" style="font-size: 10px;">computer graphics</a> <a href="/blog/tags/note/" style="font-size: 10px;">note</a> <a href="/blog/tags/path-Relative-Path-Absolute-Path/" style="font-size: 10px;">path , Relative Path ,Absolute Path</a>
     </div>
@@ -558,7 +561,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/03/">March 2018</a></li></ul>
     </div>
@@ -568,12 +571,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/blog/2018/06/07/Spring basic annotation/">Spring基本注解</a>
+            <a href="/blog/2018/06/07/Spring basic annotation/">(no title)</a>
           </li>
         
           <li>
@@ -605,7 +608,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 DingJiawen<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
